@@ -3,9 +3,14 @@ import PropTypes from 'prop-types'
 import CalculatorTitle from './CalculatorTitle'
 import OutputScreen from './OutputScreen'
 import Button from './Button'
+import useStorage from '../hooks/storage'
+import History from './History'
+
 const Calculator = props => {
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
+    const [items, putItems, clearItems] = useStorage();
+
     const handleClick =(event)=>{
         
         const value = event.target.value;
@@ -22,8 +27,10 @@ const Calculator = props => {
                         setAnswer("Math Error")
                     }
                     else{
-                        setAnswer(ans);
+                        putItems([...items, { question: question, answer: ans}]);
+                        setAnswer(ans)
                         setQuestion(question)
+                        console.log(items)
                     }
                     break;
                 }
@@ -86,6 +93,9 @@ const Calculator = props => {
                     <Button label={'1'} handleClick={handleClick} className='border-2 border-[#222]'/>
                     <Button className="bg-[#ffcc0e] border-2 border-[#222]" label={'='} handleClick={handleClick}/>
                 </div>
+            </div>
+            <div>
+                <History history={items} />
             </div>
         </div>
     )
