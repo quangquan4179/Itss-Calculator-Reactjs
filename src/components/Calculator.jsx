@@ -6,7 +6,7 @@ import Button from './Button'
 import useStorage from '../hooks/storage'
 import History from './History'
 
-const Calculator = props => {
+const Calculator =() => {
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
     const [items, putItems, clearItems] = useStorage();
@@ -48,7 +48,7 @@ const Calculator = props => {
             
             default: {
                 var newQ =question
-                console.log("🚀 ~ file: Calculator.jsx ~ line 45 ~ handleClick ~ newQ", newQ)
+                // console.log("🚀 ~ file: Calculator.jsx ~ line 45 ~ handleClick ~ newQ", newQ)
                
                 setQuestion(newQ+value)
                 break;
@@ -61,9 +61,9 @@ const Calculator = props => {
             <div>
                 <CalculatorTitle title='Calculator ' />
             </div>
-            <div>
+            <div >
                 <OutputScreen question={question} answer={answer} />
-                <div>
+                <div className='mt-5' >
                     <Button className="bg-[#ffcc0e] border-2 border-[#222]" label={'Clear'}  handleClick={handleClick}/>
                     <Button className="bg-[#ffcc0e] border-2 border-[#222]" label={'Delete'} handleClick={handleClick}/>
                     <Button className="bg-[#ffcc0e] border-2 border-[#222]" label={'/'} handleClick={handleClick}/>
@@ -96,6 +96,7 @@ const Calculator = props => {
             </div>
             <div>
                 <History history={items} />
+                <button onClick={clearItems} className=' bg-[#594fb8] rounded-lg mt-5 text-[#FFFFFF]'>Clear History</button>
             </div>
         </div>
     )

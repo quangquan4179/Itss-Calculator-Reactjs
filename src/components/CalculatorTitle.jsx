@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const CalculatorTitle = ({title}) => {
   return (
-    <div>CalculatorTitle</div>
+    <div className='text-lg font-medium'>{title}</div>
   )
 }
 

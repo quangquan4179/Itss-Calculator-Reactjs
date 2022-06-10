@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const Button = ({className,label, handleClick}) => {
   return (
@@ -7,6 +6,6 @@ const Button = ({className,label, handleClick}) => {
   )
 }
 
-Button.propTypes = {}
+
 
 export default Button
